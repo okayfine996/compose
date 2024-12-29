@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 15s # 全局抓取间隔，默认 15 秒
+  evaluation_interval: 15s # 规则评估间隔
+
+scrape_configs:
+  # 采集 Prometheus 自身的监控数据
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # 采集本地 node-exporter 数据
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
